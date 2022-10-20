@@ -24,10 +24,10 @@ namespace Commercial_Controller
             
             for (int i = 0; i < column.elevatorsList.Count; i++)
             {
-               
                 while (column.elevatorsList[i].floorRequestsList.Count != 0)
                 {
-                     Console.WriteLine(column.elevatorsList[i].currentFloor);
+                    Console.WriteLine("elev moving to their direction");
+                    Console.WriteLine(column.elevatorsList[i].currentFloor);
                     column.elevatorsList[i].move();
                 }
             }

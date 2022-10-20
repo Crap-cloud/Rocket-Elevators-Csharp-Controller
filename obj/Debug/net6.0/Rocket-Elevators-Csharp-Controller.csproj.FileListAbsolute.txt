@@ -1,0 +1,5 @@
+/Users/yannilapoyade/Documents/Rocket-Elevators-Csharp-Controller/obj/Debug/net6.0/Rocket-Elevators-Csharp-Controller.csproj.AssemblyReference.cache
+/Users/yannilapoyade/Documents/Rocket-Elevators-Csharp-Controller/obj/Debug/net6.0/Rocket-Elevators-Csharp-Controller.GeneratedMSBuildEditorConfig.editorconfig
+/Users/yannilapoyade/Documents/Rocket-Elevators-Csharp-Controller/obj/Debug/net6.0/Rocket-Elevators-Csharp-Controller.AssemblyInfoInputs.cache
+/Users/yannilapoyade/Documents/Rocket-Elevators-Csharp-Controller/obj/Debug/net6.0/Rocket-Elevators-Csharp-Controller.AssemblyInfo.cs
+/Users/yannilapoyade/Documents/Rocket-Elevators-Csharp-Controller/obj/Debug/net6.0/Rocket-Elevators-Csharp-Controller.csproj.CoreCompileInputs.cache
