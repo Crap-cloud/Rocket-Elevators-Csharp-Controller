@@ -67,9 +67,14 @@ namespace Commercial_Controller
         {
             var elevator = this.findElevator(userPosition, direction);
             elevator.addNewRequest(userPosition);//inconnu
+            // Console.WriteLine("weofjnwqofjweofn");
+            // Console.WriteLine(elevator.floorRequestsList);
             elevator.move();
-            elevator.addNewRequest(1);
+            //Console.WriteLine(elevator.floorRequestsList);
+            elevator.addNewRequest(1); // fix this 
+            //Console.WriteLine(elevator.floorRequestsList);
             elevator.move();
+            //Console.WriteLine(elevator.floorRequestsList);
             return elevator;
         }
 
@@ -87,22 +92,22 @@ namespace Commercial_Controller
                 foreach(Elevator elevator in this.elevatorsList)
                 {
                     //The elevator is at the lobby and already has some requests. It is about to leave but has not yet departed
-                    if (elevator.currentFloor == 1 & elevator.status == "stopped")
+                    if (elevator.currentFloor == 1 && elevator.status == "stopped")
                     {
                         bestElevatorInformations = this.checkIfElevatorIsBetter(1, elevator, bestScore, referenceGap,  _requestedFloor);
                     }
                     //The elevator is at the lobby and has no requests
-                    else if (elevator.currentFloor == 1 & elevator.status == "idle")
+                    else if (elevator.currentFloor == 1 && elevator.status == "idle")
                     {
                         bestElevatorInformations = this.checkIfElevatorIsBetter(2, elevator, bestScore, referenceGap, _requestedFloor);
                     }
                     //The elevator is lower than me and is coming up. It means that I"m requesting an elevator to go to a basement, and the elevator is on it"s way to me.
-                    else if(elevator.currentFloor > 1 & elevator.direction == "up")
+                    else if(elevator.currentFloor < 1 && elevator.direction == "up")
                     {
                         bestElevatorInformations = this.checkIfElevatorIsBetter(3, elevator, bestScore, referenceGap, _requestedFloor);
                     }
                     //The elevator is above me and is coming down. It means that I"m requesting an elevator to go to a floor, and the elevator is on it"s way to me
-                    else if(elevator.currentFloor < 1 & elevator.direction == "down"){
+                    else if(elevator.currentFloor > 1 && elevator.direction == "down"){
                         bestElevatorInformations = this.checkIfElevatorIsBetter(3, elevator, bestScore, referenceGap, _requestedFloor);
                     }
                     //The elevator is not at the first floor, but doesn"t have any request
@@ -123,17 +128,17 @@ namespace Commercial_Controller
                 foreach(Elevator elevator in this.elevatorsList)
                 {
                     //The elevator is at the same level as me, and is about to depart to the first floor
-                    if (elevator.currentFloor == _requestedFloor & elevator.status == "stopped" & _requestedDirection == elevator.direction)
+                    if (elevator.currentFloor == _requestedFloor && elevator.status == "stopped" && _requestedDirection == elevator.direction)
                     {
                         bestElevatorInformations = this.checkIfElevatorIsBetter(1, elevator, bestScore, referenceGap,  _requestedFloor);
                     }
                     //The elevator is lower than me and is going up. I"m on a basement, and the elevator can pick me up on it"s way
-                    else if (_requestedFloor > elevator.currentFloor  & elevator.direction == "up" & _requestedDirection == "up")
+                    else if (_requestedFloor > elevator.currentFloor  && elevator.direction == "up" && _requestedDirection == "up")
                     {
                         bestElevatorInformations = this.checkIfElevatorIsBetter(2, elevator, bestScore, referenceGap, _requestedFloor);
                     }
                     //The elevator is higher than me and is going down. I"m on a floor, and the elevator can pick me up on it"s way
-                    else if(_requestedFloor < elevator.currentFloor  & elevator.direction == "down" & _requestedDirection == "down")
+                    else if(_requestedFloor < elevator.currentFloor  && elevator.direction == "down" && _requestedDirection == "down")
                     {
                         bestElevatorInformations = this.checkIfElevatorIsBetter(2, elevator, bestScore, referenceGap, _requestedFloor);
                     }

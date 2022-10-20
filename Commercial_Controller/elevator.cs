@@ -31,26 +31,29 @@ namespace Commercial_Controller
 
         public void move()
         {
+           //Console.WriteLine("lenghhhhhhht" + this.floorRequestsList[0]);
             while(this.floorRequestsList.Count != 0){
                 int destination = this.floorRequestsList[0];
                 this.status = "moving";
                 this.sortFloorList();
-                Console.WriteLine("Elevator floor:" + this.currentFloor  + ", destination is:" + destination + this.direction);
+                //Console.WriteLine("Elevator floor:" + this.currentFloor  + ", destination is:" + destination + this.direction);
                 if(this.direction == "up"){
                     while(this.currentFloor < destination){
                         this.currentFloor ++;
+                        //Console.WriteLine("up" + this.currentFloor);
                     }
                 }
                 else if(this.direction == "down"){
                     while(this.currentFloor > destination){
                         this.currentFloor --;
+                        //Console.WriteLine("down" + this.currentFloor);
                     }
                 }
                 this.status = "stopped";
                 this.operateDoors();
                 this.floorRequestsList.RemoveAt(0);
                 this.completedRequestsList.Add(destination);
-                Console.WriteLine("Elevator moving to floor:" + this.currentFloor  + ", destination is:" + destination);
+                //Console.WriteLine("Elevator moving to floor:" + this.currentFloor  + ", destination is:" + destination);
                 
             }
             this.status = "idle";
@@ -93,8 +96,10 @@ namespace Commercial_Controller
 
         public void addNewRequest(int _requestedFloor)
         {
+            //Console.WriteLine("floor request " + _requestedFloor);
             if(!this.floorRequestsList.Contains(_requestedFloor)){
                 this.floorRequestsList.Add(_requestedFloor);
+                //Console.WriteLine("floor request list check" + this.floorRequestsList[0]);
             }
             if(this.currentFloor < _requestedFloor){
                 this.direction = "up";

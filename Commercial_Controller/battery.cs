@@ -42,37 +42,38 @@ namespace Commercial_Controller
             Column column = new Column(columnID, _amountOfBasements, _amountOfElevatorPerColumn, _servedFloorsList, true);
             this.columnsList.Add(column);
             columnID += 1;
-            Console.WriteLine("columnid b");
-            Console.WriteLine(columnID);
-            Console.WriteLine("_nb basement b");
-            Console.WriteLine(_amountOfBasements);
-            Console.WriteLine("nb elev col b");
-            Console.WriteLine(_amountOfElevatorPerColumn);
+            // Console.WriteLine("columnid b");
+            // Console.WriteLine(columnID);
+            // Console.WriteLine("_nb basement b");
+            // Console.WriteLine(_amountOfBasements);
+            // Console.WriteLine("nb elev col b");
+            // Console.WriteLine(_amountOfElevatorPerColumn);
         }
 
         public void createColumns(int _amountOfColumns, int _amountOfFloors, int _amountOfElevatorPerColumn)
         {
             int columnID = 1;
-            int amountOfFloorsPerColumn = _amountOfFloors / _amountOfColumns;
+            int amountOfFloorsPerColumn = (int)Math.Ceiling((double)_amountOfFloors/_amountOfColumns);
             int floor = 1;
-            List<int> _servedFloorsList = new List<int>();
+            //List<int> _servedFloorsList = new List<int>();
             for(int j=0; j<_amountOfColumns; j++) {
-                for(int i=0; i<_amountOfElevatorPerColumn;i++){
+                List<int> _servedFloorsList = new List<int>();
+                for(int i=0; i<amountOfFloorsPerColumn;i++){
                     if(floor <= _amountOfFloors) {
                         _servedFloorsList.Add(floor);
                         floor += 1;
                     }
                 }
+                Column column = new Column(columnID, _amountOfFloors, _amountOfElevatorPerColumn, _servedFloorsList, false);
+                this.columnsList.Add(column);
+                columnID += 1;
             }
-            Column column = new Column(columnID, _amountOfFloors, _amountOfElevatorPerColumn, _servedFloorsList, false);
-            this.columnsList.Add(column);
-            columnID += 1;
-            Console.WriteLine("columnid ");
-            Console.WriteLine(columnID);
-            Console.WriteLine("_nb floor ");
-            Console.WriteLine(_amountOfFloors);
-            Console.WriteLine("nb elev col ");
-            Console.WriteLine(_amountOfElevatorPerColumn);
+            // Console.WriteLine("columnid ");
+            // Console.WriteLine(columnID);
+            // Console.WriteLine("_nb floor ");
+            // Console.WriteLine(_amountOfFloors);
+            // Console.WriteLine("nb elev col ");
+            // Console.WriteLine(_amountOfElevatorPerColumn);
         }
 
         public void createFloorRequestButtons(int _amountOfFloors)
@@ -116,8 +117,8 @@ namespace Commercial_Controller
         {
             var column = this.findBestColumn(_requestedFloor);
             var elevator = column.findElevator(1, _direction);
-            Console.WriteLine(" elev id best");
-            Console.WriteLine(elevator.ID);
+            // Console.WriteLine(" elev id best");
+            // Console.WriteLine(elevator.ID);
             elevator.addNewRequest(1);
             elevator.move();
             elevator.addNewRequest(_requestedFloor);
